@@ -47,7 +47,6 @@ Ordinarily, I'm from the mindset of keep it simple and keep the taxing services 
 ## Native/Shipped macOS BS Removal
 - enter `sudo mount -uw /` _(to mount the read-only root file system as editable)_
 - enter `sudo rm -rf /System/Applications/Chess.app /System/Applications/FaceTime.app /System/Applications/Home.app /System/Applications/Maps.app /System/Applications/Mail.app /System/Applications/News.app /System/Applications/Photo\ Booth.app /System/Applications/Photos.app /System/Applications/Stocks.app /System/Applications/TV.app /System/Applications/Reminders.app` _(feel free to add more to the list lol)_
-- 
 
 ## Highly Subjective UI Alterations
 _(Quite of few of these end up serving as `aliases` later on, so you can also run them as additions or `echo >> .zshrc` or `echo >> .bashrc` for your profile and then just run the aliases after successful return of the profile edits...)_
@@ -57,6 +56,36 @@ _(Quite of few of these end up serving as `aliases` later on, so you can also ru
   - enter `defaults write com.apple.dock ResetLaunchPad -bool TRUE;killall Dock`, where you reset both the `dock` and the `springboard/launchpad` as they are both coupled in the IOKit
 - Kill the stupid and really poorly updated `AppleSpell` program _(espeically useful for C/C++/C#/Perl/Haskell or practically any developer)_
   - run the [**AppleSpell Disabled Forever** micro script](https://github.com/felenk/config_mbp/blob/main/README.md#applespell-disabled-forever)
+- Kill trackpad `force touch/click` with: `defaults write NSGlobalDomain com.apple.trackpad.forceClick false`
+- Update trackpad scaling factor with: `defaults write NSGlobalDomain com.apple.trackpad.scaling 1.5`
+- Add contextual menu for Web Inspector with: `defaults write NSGlobalDomain WebKitDeveloperExtras true`
+- Set `celcius` as the default temperature guage/measure with: `defaults write NSGlobalDomain AppleTemperatureUnit "Celsius"`
+- Whenever you want to really play with or store/backup your values you can just pipe them into a file, like I do, with: `defaults read NSGlobalDomain > ~/Profilers/DefaultsGlobal.xml` _(and I have it in an `XML` format, because I have a script that later goes in and makes mass changes and then compiles these options into a viewable format for a GUI to develop later)_
+- `//todo, cluster defaults write commands into a group/script to run as batch`
+- More commands with: `defaults write NSGlobalDomain ` _(later to serve as interactive script)_
+  - `com.apple.finder _FXShowPosixPathInTitle true` _(should actually be: `defaults write com.apple.finder _FXShowPosixPathInTitle -bool true`)_
+  - `defaults write com.apple.Finder AppleShowAllFiles -bool true`
+  - `defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false`
+  - `defaults write com.apple.finder PathBarRootAtHome -bool TRUE` with reversal as `defaults delete com.apple.finder PathBarRootAtHome`
+  - `defaults write com.apple.Finder FXPreferredViewStyle Nlsv` where options are `Flwv`, `Nlsv`, `clmv` and `icnv` as `Cover Flow`, `List`, `Column`, and `icon` respectively
+  - `defaults write NSGlobalDomain NSScrollViewRubberbanding -int 0` _(disable stupid rubberband finder)_
+  - `defaults write com.apple.finder CreateDesktop -bool false`
+  - `defaults write com.apple.finder QuitMenuItem -bool true`
+  - `defaults write com.apple.screencapture disable-shadow true; killall SystemUIServer`
+  - `defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false`
+  - `defaults write -g QLPanelAnimationDuration -float 0`
+  - `defaults write NSGlobalDomain NSWindowResizeTime -float 0.001`
+  - `defaults write com.apple.finder DisableAllAnimations -bool true`
+  - `defaults write com.apple.dock launchanim -bool false`
+  - `defaults write com.apple.dock expose-animation-duration -float 0.1`
+  - `defaults write com.apple.Dock autohide-delay -float 0`
+  - `defaults write com.apple.Safari WebKitInitialTimedLayoutDelay 0.25`
+  - `defaults write NSGlobalDomain KeyRepeat -int 0`
+  - `defaults write com.apple.finder ShowStatusBar -bool true`
+  - `defaults write com.apple.finder ShowTabView -bool true`
+  - `defaults write com.apple.finder ShowPathbar -bool true`
+  - `defaults write com.apple.finder NewWindowTarget -string 'PfHm'`
+  - `defaults write com.apple.loginwindow.plist TALLogoutSavesState -bool false`
 
 
 ## MicroScripts
