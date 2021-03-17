@@ -64,8 +64,10 @@ _(Quite of few of these end up serving as `aliases` later on, so you can also ru
 ### AppleSpell Disabled Forever
 ```sh
 sudo mv /System/Library/Services/AppleSpell.service/Contents/Resources \
-        /System/Library/Services/AppleSpell.service/Contents/Resources.disabled
+        /System/Library/Services/AppleSpell.service/Contents/Resources.disabled \
+        && defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false \
 killall AppleSpell
 ```
+_(to re-enable the `NSAutomaticSpellingCorrectionEnabled` key, just run `defaults write -g NSAutomaticSpellingCorrectionEnabled -bool true`)_
 
 _***** Note: I've found it's better to have a higher count for the columns and a lower count for the rows, if you want to have the optimal amount of space utilized, without as much of the "clear/whitespace" between the icons. Something that just drives me a little bananas. Mine is 9 by 7. Just a suggestion._
