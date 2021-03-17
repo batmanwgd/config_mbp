@@ -56,7 +56,7 @@ _(Quite of few of these end up serving as `aliases` later on, so you can also ru
   - enter `defaults write com.apple.dock springboard-rows -int Y`, where `Y` is the number of rows *****
   - enter `defaults write com.apple.dock ResetLaunchPad -bool TRUE;killall Dock`, where you reset both the `dock` and the `springboard/launchpad` as they are both coupled in the IOKit
 - Kill the stupid and really poorly updated `AppleSpell` program _(espeically useful for C/C++/C#/Perl/Haskell or practically any developer)_
-  - run the [**AppleSpell Disabled Forever** micro script](#)
+  - run the [**AppleSpell Disabled Forever** micro script](https://github.com/felenk/config_mbp/blob/main/README.md#applespell-disabled-forever)
 
 
 ## MicroScripts
