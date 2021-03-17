@@ -37,3 +37,35 @@ _[MacPorts is here](#) and the [PKG_SRC](#) we are looking for is a [NetBSD](#) 
   - Then you enter `sudo tar -zxpf ${BOOTSTRAP_TAR} -C /` with your `sudo password` and then `eval $(/usr/libexec/path_helper)`
   - Then it's `sudo pkgin -y update` to setup
   - and then restart to allow taking of effect _(logout really doesn't do the trick, and I take this opportunity to perform a `PRAM` reset)_
+
+## Initial Minor Software Installs
+Ordinarily, I'm from the mindset of keep it simple and keep the taxing services on your machine as low as possible, but there are a couple very minor exceptions to that rule, and these steps cover those programs and settings. 
+
+- [PlistEdit Pro](https://www.fatcatsoftware.com/plisteditpro/)
+
+
+## Native/Shipped macOS BS Removal
+- enter `sudo mount -uw /` _(to mount the read-only root file system as editable)_
+- enter `sudo rm -rf /System/Applications/Chess.app /System/Applications/FaceTime.app /System/Applications/Home.app /System/Applications/Maps.app /System/Applications/Mail.app /System/Applications/News.app /System/Applications/Photo\ Booth.app /System/Applications/Photos.app /System/Applications/Stocks.app /System/Applications/TV.app /System/Applications/Reminders.app` _(feel free to add more to the list lol)_
+- 
+
+## Highly Subjective UI Alterations
+_(Quite of few of these end up serving as `aliases` later on, so you can also run them as additions or `echo >> .zshrc` or `echo >> .bashrc` for your profile and then just run the aliases after successful return of the profile edits...)_
+- Change rows and columns for `springboard aka launchpad`: _(shows you which name won out for consumers)_
+  - enter `defaults write com.apple.dock springboard-columns -int X`, where `X` is the number of columns *****
+  - enter `defaults write com.apple.dock springboard-rows -int Y`, where `Y` is the number of rows *****
+  - enter `defaults write com.apple.dock ResetLaunchPad -bool TRUE;killall Dock`, where you reset both the `dock` and the `springboard/launchpad` as they are both coupled in the IOKit
+- Kill the stupid and really poorly updated `AppleSpell` program _(espeically useful for C/C++/C#/Perl/Haskell or practically any developer)_
+  - run the [**AppleSpell Disabled Forever** micro script](#)
+
+
+## MicroScripts
+
+### AppleSpell Disabled Forever
+```sh
+sudo mv /System/Library/Services/AppleSpell.service/Contents/Resources \
+        /System/Library/Services/AppleSpell.service/Contents/Resources.disabled
+killall AppleSpell
+```
+
+_***** Note: I've found it's better to have a higher count for the columns and a lower count for the rows, if you want to have the optimal amount of space utilized, without as much of the "clear/whitespace" between the icons. Something that just drives me a little bananas. Mine is 9 by 7. Just a suggestion._
