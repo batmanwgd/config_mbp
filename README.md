@@ -65,9 +65,19 @@ _(Quite of few of these end up serving as `aliases` later on, so you can also ru
 ```sh
 sudo mv /System/Library/Services/AppleSpell.service/Contents/Resources \
         /System/Library/Services/AppleSpell.service/Contents/Resources.disabled \
-        && defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false \
+        && defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled false \
+        && defaults write NSGlobalDomain NSAutomaticTextCompletionEnabled false \
+        && defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled false \
+        && defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled false \
+        && defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled false \
+        && defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled false \
+        && defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled false \
+
 killall AppleSpell
 ```
-_(to re-enable the `NSAutomaticSpellingCorrectionEnabled` key, just run `defaults write -g NSAutomaticSpellingCorrectionEnabled -bool true`)_
+#### Two Notes:
+1. `NSGlobalDomain` statements can be written as either: `defaults write -g NSAutomaticCapitalizationEnabled -bool false` or `defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled false` _(I try to write out the actual key in my scripts to make the code more readable for my memory sake and your viewing/reproduction sake. It's also easier to turn those into repeatable input variables, as is listed in my `//todos`)_
+2. In order to re-enable the `NSAutomaticSpellingCorrectionEnabled` key, just run `defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled true` and same with the `NSAutomaticTextCompletionEnabled -bool`
+
 
 _***** Note: I've found it's better to have a higher count for the columns and a lower count for the rows, if you want to have the optimal amount of space utilized, without as much of the "clear/whitespace" between the icons. Something that just drives me a little bananas. Mine is 9 by 7. Just a suggestion._
