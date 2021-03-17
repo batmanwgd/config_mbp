@@ -24,3 +24,16 @@ Well at least one day this will be automated/automatable. The first step to this
       - enter `ls -la` to review all hidden files in a readable format and to confirm a return of the `ConfigurationProfiles` name change
       - enter `exit` and then `logout` in that shell, and then proceed to logout through the GUI as normal. _(or you can alternatively run this command 100% in the terminal, there are just a few bugs that can happen doing it exclusively in the terminal, when the GUI doesn't always keep up, esp. in account features)_
     - after successful re-entry or re-logon, open `System Preferences` and confirm there is nothing showing for the `profiles` pane _(the profiles pane shouldn't show up there at all anymore completely)_ and you can re-affirm this is set properly with a new terminal/shell and enter `sudo profiles -P` to ensure there are zero profiles set.
+
+## MacPorts and PKG_SRC via Joyent
+_[MacPorts is here](#) and the [PKG_SRC](#) we are looking for is a [NetBSD](#) variety put out by the team at [Joyent](#), who are now owned or otherwise officially a part/subsidy of [Samsung](#)_
+
+- Download `XQuartz` [from their website](https://www.xquartz.org)
+  - Follow necessary prompts with the installer _(let this run in background and do not hit final confirmation/logout button yet)_
+- Download `MacPorts` installer [from their website](https://www.macports.org/install.php) _(of you can visit the repository [here](https://github.com/macports/macports-base))_
+  - Follow necessary prompts with the installer _(let this run in background and do not hit final confirmation button yet)_
+- Grab a copy of the `tarball` from [Joyent's website](https://pkgsrc.joyent.com)
+  - For Catalina, it's `BOOTSTRAP_TAR="bootstrap-macos14-trunk-x86_64-20200716.tar.gz"` && `BOOTSTRAP_SHA="395be93bf6b3ca5fbe8f0b248f1f33181b8225fe"` && `curl -O https://pkgsrc.joyent.com/packages/Darwin/bootstrap/${BOOTSTRAP_TAR}` && `echo "${BOOTSTRAP_SHA}  ${BOOTSTRAP_TAR}" | shasum -c-` with a return of `bootstrap-macos14-trunk-x86_64-20200716.tar.gz: OK`
+  - Then you enter `sudo tar -zxpf ${BOOTSTRAP_TAR} -C /` with your `sudo password` and then `eval $(/usr/libexec/path_helper)`
+  - Then it's `sudo pkgin -y update` to setup
+  - and then restart to allow taking of effect _(logout really doesn't do the trick, and I take this opportunity to perform a `PRAM` reset)_
